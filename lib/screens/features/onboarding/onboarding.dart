@@ -8,6 +8,7 @@ import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/sizes.dart';
 import '../../../utils/helpers/helper_functions.dart';
 import 'onboarding_controller.dart';
+import 'onboarding_page.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -33,6 +34,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
               child: Column(
                 children: [
+                  Image(
+                    height: 80,
+                    width: 80,
+                    image: AssetImage(
+                      dark ? TImages.darkAppLogo : TImages.lightAppLogo,
+                    ),
+                  ),
                   Expanded(
                     child: PageView(
                       controller: controller.pageController,
@@ -67,68 +75,30 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       dotWidth: 5,
                     ),
                   ),
+                  const SizedBox(
+                    height: TSizes.spaceBtwSections,
+                  ),
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.20,
+                    height: MediaQuery.of(context).size.width * 0.20,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: TColors.primary,
+                    ),
+                    child: const Icon(
+                      Icons.keyboard_arrow_right_rounded,
+                      color: TColors.white,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: TSizes.spaceBtwItems,
+                  ),
                 ],
               ),
             )
           ],
         ),
       ),
-    );
-  }
-}
-
-class OnboardingPage extends StatelessWidget {
-  const OnboardingPage({
-    super.key,
-    required this.image,
-    required this.title,
-    required this.subTitle,
-  });
-
-  final String image, title, subTitle;
-
-  @override
-  Widget build(BuildContext context) {
-    final dark = THelperFunctions.isDarkMode(context);
-    return Column(
-      children: [
-        /// Slide Image
-        Container(
-          margin: const EdgeInsets.all(10),
-          height: 350,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              fit: BoxFit.cover,
-              image: AssetImage(
-                image,
-              ),
-            ),
-            borderRadius: BorderRadius.circular(20),
-            color: dark ? TColors.dark : TColors.white,
-          ),
-        ),
-        const SizedBox(
-          height: TSizes.defaultSpace,
-        ),
-        Text(
-          title,
-          style: Theme.of(context).textTheme.headlineMedium,
-          textAlign: TextAlign.center,
-        ),
-
-        const SizedBox(
-          height: TSizes.defaultSpace,
-        ),
-        Text(
-          subTitle,
-          style: Theme.of(context).textTheme.bodyMedium,
-          textAlign: TextAlign.center,
-        ),
-        const SizedBox(
-          height: TSizes.defaultSpace,
-        ),
-      ],
     );
   }
 }
