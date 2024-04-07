@@ -1,3 +1,4 @@
+import 'package:BillPoint/screens/features/onboard_final.dart';
 import 'package:BillPoint/utils/constants/image_strings.dart';
 import 'package:BillPoint/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';
@@ -47,17 +48,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       onPageChanged: controller.updatePageIndicator,
                       children: const [
                         OnboardingPage(
-                          image: TImages.onBoardingImage1,
+                          image: TImages.payment,
                           title: TTexts.onBoardingTitle1,
                           subTitle: TTexts.onBoardingSubTitle1,
                         ),
                         OnboardingPage(
-                          image: TImages.onBoardingImage2,
+                          image: TImages.trust,
                           title: TTexts.onBoardingTitle2,
                           subTitle: TTexts.onBoardingSubTitle2,
                         ),
                         OnboardingPage(
-                          image: TImages.onBoardingImage3,
+                          image: TImages.refer,
                           title: TTexts.onBoardingTitle3,
                           subTitle: TTexts.onBoardingSubTitle3,
                         ),
@@ -85,9 +86,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       shape: BoxShape.circle,
                       color: TColors.primary,
                     ),
-                    child: const Icon(
-                      Icons.keyboard_arrow_right_rounded,
-                      color: TColors.white,
+                    child: IconButton(
+                      onPressed: () => Get.off(
+                        () => const OnboardFinalScreen(),
+                      ),
+                      icon: const Icon(
+                        Icons.keyboard_arrow_right_rounded,
+                        color: TColors.white,
+                      ),
                     ),
                   ),
                   const SizedBox(

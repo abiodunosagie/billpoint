@@ -43,12 +43,11 @@ class TImages {
   static const String acerlogo = "assets/icons/brands/acer_logo.png";
 
   // -- Animations
-  static const String productsIllustration =
-      "assets/images/animations/sammy-line-workout.gif";
-  static const String productsSaleIllustration =
-      "assets/images/animations/sammy-line-sale.png";
-  static const String staticSuccessIllustration =
-      "assets/images/animations/sammy-line-success.png";
+  static const String refer = "assets/animation/refer.json";
+  static const String globe = "assets/animation/refer.json";
+  static const String payment = "assets/animation/paymentanim.json";
+  static const String scouting = "assets/animation/scouting.json";
+  static const String trust = "assets/animation/securityanim.json";
   static const String deliveredInPlaneIllustration =
       "assets/images/animations/sammy-line-come-back-later.png";
   static const String deliveredEmailIllustration =

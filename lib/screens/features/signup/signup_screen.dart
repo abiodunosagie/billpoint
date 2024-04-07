@@ -1,0 +1,187 @@
+import 'package:BillPoint/utils/helpers/helper_functions.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
+
+import '../../../utils/constants/colors.dart';
+import '../../../utils/constants/sizes.dart';
+import '../../../utils/constants/text_strings.dart';
+import '../home/homescreen.dart';
+
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({super.key});
+
+  @override
+  State<SignupScreen> createState() => _SignupScreenState();
+}
+
+class _SignupScreenState extends State<SignupScreen> {
+  @override
+  Widget build(BuildContext context) {
+    final dark = THelperFunctions.isDarkMode(context);
+    return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: true,
+        iconTheme: IconThemeData(
+          color: dark ? TColors.light : TColors.darkerGrey,
+        ),
+        title: const Text(
+          TTexts.createAccount,
+        ),
+        centerTitle: true,
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20,
+              vertical: 20,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  TTexts.signupTitle,
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
+                const Text(
+                  TTexts.signupSubTitle,
+                ),
+                const SizedBox(
+                  height: TSizes.spaceBtwSections * 2,
+                ),
+                Form(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      TextField(
+                        keyboardType: TextInputType.name,
+                        decoration: InputDecoration(
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                            color: dark ? TColors.light : TColors.darkGrey,
+                          )),
+                          prefixIcon: const Icon(
+                            Iconsax.user,
+                          ),
+                          hintText: 'Full Name',
+                        ),
+                      ),
+                      const SizedBox(
+                        height: TSizes.spaceBtwItems,
+                      ),
+                      TextField(
+                        keyboardType: TextInputType.emailAddress,
+                        decoration: InputDecoration(
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                            color: dark ? TColors.light : TColors.darkGrey,
+                          )),
+                          prefixIcon: const Icon(
+                            Iconsax.message,
+                          ),
+                          hintText: 'Email',
+                        ),
+                      ),
+                      const SizedBox(
+                        height: TSizes.spaceBtwItems,
+                      ),
+                      TextField(
+                        keyboardType: TextInputType.phone,
+                        decoration: InputDecoration(
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                            color: dark ? TColors.light : TColors.darkGrey,
+                          )),
+                          prefixIcon: const Icon(
+                            Iconsax.call,
+                          ),
+                          hintText: 'Phone Number',
+                        ),
+                      ),
+                      const SizedBox(
+                        height: TSizes.spaceBtwItems,
+                      ),
+                      TextField(
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: dark ? TColors.light : TColors.darkGrey,
+                            ),
+                          ),
+                          prefixIcon: const Icon(
+                            Iconsax.lock,
+                          ),
+                          suffixIcon: const Icon(
+                            Iconsax.eye,
+                          ),
+                          hintText: 'Password',
+                        ),
+                      ),
+                      const SizedBox(
+                        height: TSizes.spaceBtwItems,
+                      ),
+                      TextField(
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: dark ? TColors.light : TColors.darkGrey,
+                            ),
+                          ),
+                          prefixIcon: const Icon(
+                            Iconsax.lock,
+                          ),
+                          suffixIcon: const Icon(
+                            Iconsax.eye,
+                          ),
+                          hintText: 'Confirm Password',
+                        ),
+                      ),
+                      const SizedBox(
+                        height: TSizes.spaceBtwItems,
+                      ),
+                      TextField(
+                        keyboardType: TextInputType.text,
+                        decoration: InputDecoration(
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: dark ? TColors.light : TColors.darkGrey,
+                            ),
+                          ),
+                          prefixIcon: const Icon(
+                            Iconsax.share,
+                          ),
+                          hintText: 'Referral (Optional)',
+                        ),
+                      ),
+                      const SizedBox(
+                        height: TSizes.spaceBtwSections,
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: TSizes.spaceBtwItems,
+                ),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () => Get.offAll(
+                      () => const HomeScreen(),
+                    ),
+                    child: const Text(
+                      TTexts.tContinue,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

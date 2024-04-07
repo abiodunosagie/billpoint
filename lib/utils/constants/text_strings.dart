@@ -43,12 +43,14 @@ class TTexts {
   static const String verificationCode = "verificationCode";
   static const String resendEmail = "Resend Email";
   static const String resendEmailIn = "Resend email in";
+  static const String dontHaveAnAccount = "Don\'t have an account?";
 
   // -- Authentication Headings
   static const String loginTitle = "Welcome back,";
-  static const String loginSubTitle =
-      "Discover Limitless Choices and Unmatched Convenience.";
+  static const String loginSubTitle = "log-in to your account to continue";
   static const String signupTitle = "Let’s create your account";
+  static const String signupSubTitle =
+      "Create an account so you can pay your bills and purchase top-ups faster.";
   static const String forgetPasswordTitle = "Forget password";
   static const String forgetPasswordSubTitle =
       "Don’t worry sometimes people can forget too, enter your email and we will send you a password reset link.";
@@ -67,6 +69,11 @@ class TTexts {
 
   // -- Product
   static const String popularProducts = "Popular Products";
+
+  // -- Onborading Final
+  static const String onboardingFinalWelcomeTitle = "Welcome to BillPoint!";
+  static const String onboardingFinalWelcomeSubTitle =
+      "Join the BillPoint community today and simplify your bills, subscriptions, and betting payments. To get started, please sign-in or create an account.";
 
   // -- Home
   static const String homeAppbarTitle = "Good day for shopping";

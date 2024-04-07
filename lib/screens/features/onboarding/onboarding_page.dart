@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/sizes.dart';
@@ -25,14 +26,12 @@ class OnboardingPage extends StatelessWidget {
           height: 400,
           width: double.infinity,
           decoration: BoxDecoration(
-            image: DecorationImage(
-              fit: BoxFit.cover,
-              image: AssetImage(
-                image,
-              ),
-            ),
             borderRadius: BorderRadius.circular(20),
-            color: dark ? TColors.dark : TColors.white,
+            color: dark ? TColors.dark : TColors.light,
+          ),
+          child: Lottie.asset(
+            fit: BoxFit.contain,
+            image,
           ),
         ),
         const SizedBox(

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class TColors {
   // App theme colors
   static const Color primary = Color(0xFFf66b04);
-  static const Color secondary = Color(0xFFFFE24B);
+  static const Color secondary = Color(0xFFffe24b);
   static const Color accent = Color(0xFFb0c7ff);
 
   // Text colors
@@ -14,7 +14,7 @@ class TColors {
 
   // Background colors
   static const Color light = Color(0xFFf5f5f5);
-  static const Color dark = Color(0xFF1c1b20);
+  static const Color dark = Color(0xFF000E28);
   static const Color primaryBackground = Color(0xFFF3F5FF);
 
   // Dot Navigation Colors
