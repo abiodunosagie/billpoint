@@ -65,7 +65,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           prefixIcon: const Icon(
                             Iconsax.user,
                           ),
-                          hintText: 'Full Name',
+                          hintText: 'Username',
                         ),
                       ),
                       const SizedBox(
@@ -124,7 +124,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         height: TSizes.spaceBtwItems,
                       ),
                       TextField(
-                        obscureText: true,
+                        keyboardType: TextInputType.streetAddress,
                         decoration: InputDecoration(
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
@@ -132,29 +132,43 @@ class _SignupScreenState extends State<SignupScreen> {
                             ),
                           ),
                           prefixIcon: const Icon(
-                            Iconsax.lock,
+                            Iconsax.location,
                           ),
                           suffixIcon: const Icon(
                             Iconsax.eye,
                           ),
-                          hintText: 'Confirm Password',
+                          hintText: 'Address',
                         ),
                       ),
                       const SizedBox(
                         height: TSizes.spaceBtwItems,
                       ),
-                      TextField(
-                        keyboardType: TextInputType.text,
-                        decoration: InputDecoration(
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: dark ? TColors.light : TColors.darkGrey,
+                      Container(
+                        width: double.infinity,
+                        height: 100,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                            color: dark ? TColors.light : TColors.grey,
+                          ),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              TTexts.tUpload,
+                              style: Theme.of(context).textTheme.bodyLarge,
                             ),
-                          ),
-                          prefixIcon: const Icon(
-                            Iconsax.share,
-                          ),
-                          hintText: 'Referral (Optional)',
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Icon(
+                              Iconsax.image,
+                              size: 30,
+                              color: dark ? TColors.light : TColors.darkerGrey,
+                            ),
+                          ],
                         ),
                       ),
                       const SizedBox(

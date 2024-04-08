@@ -58,16 +58,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     TextField(
-                      keyboardType: TextInputType.emailAddress,
+                      keyboardType: TextInputType.name,
                       decoration: InputDecoration(
                         focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                           color: dark ? TColors.light : TColors.darkGrey,
                         )),
                         prefixIcon: const Icon(
-                          Iconsax.message,
+                          Iconsax.user,
                         ),
-                        hintText: 'Email',
+                        hintText: 'Username',
                       ),
                     ),
                     const SizedBox(

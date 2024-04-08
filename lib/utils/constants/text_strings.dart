@@ -2,11 +2,19 @@
 class TTexts {
   // -- GLOBAL Texts
   static const String and = "and";
+  static const String logOut = "Log Out";
   static const String skip = "Skip";
   static const String done = "Done";
   static const String submit = "Submit";
   static const String appName = "T-Store";
   static const String tContinue = "Continue";
+  static const String tUpload = "Upload your profile photo";
+  static const String tUsername = "Abiodun Osagie";
+  static const String tProfession = "Flutter App Developer";
+  static const String tProfilePhone = "(+234)9077601790";
+  static const String tUserEmail = "abiodunosagie8@gmail.com";
+  static const String tUserAddressDetail =
+      "Ogbonda Urdu Close, Okahia Estate, Port Harcourt, Rivers, Nigeria.";
 
   // -- OnBoarding Texts
   static const String onBoardingTitle1 =
@@ -37,6 +45,7 @@ class TTexts {
   static const String createAccount = "Create Account";
   static const String orSignInWith = "or sign in with";
   static const String orSignUpWith = "or sign up with";
+  static const String tUserAddress = "Address";
   static const String iAgreeTo = "I agree to";
   static const String privacyPolicy = "Privacy Policy";
   static const String termsOfUse = "Terms of use";
