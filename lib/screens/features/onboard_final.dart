@@ -61,9 +61,7 @@ class _OnboardFinalScreenState extends State<OnboardFinalScreen> {
               // const SizedBox(
               //   height: TSizes.spaceBtwSections * 4,
               // ),
-              const Spacer(
-                flex: 4,
-              ),
+              const Spacer(),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(

@@ -6,7 +6,7 @@ import 'package:iconsax/iconsax.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/sizes.dart';
 import '../../../utils/constants/text_strings.dart';
-import '../home/homescreen.dart';
+import '../home/profile_screen.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -14,6 +14,12 @@ class SignupScreen extends StatefulWidget {
   @override
   State<SignupScreen> createState() => _SignupScreenState();
 }
+
+TextEditingController usernameController = TextEditingController();
+TextEditingController emailController = TextEditingController();
+TextEditingController phoneNumberController = TextEditingController();
+TextEditingController passwordController = TextEditingController();
+TextEditingController addressController = TextEditingController();
 
 class _SignupScreenState extends State<SignupScreen> {
   @override
@@ -56,6 +62,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       TextField(
+                        controller: usernameController,
                         keyboardType: TextInputType.name,
                         decoration: InputDecoration(
                           focusedBorder: OutlineInputBorder(
@@ -72,6 +79,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         height: TSizes.spaceBtwItems,
                       ),
                       TextField(
+                        controller: emailController,
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
                           focusedBorder: OutlineInputBorder(
@@ -88,6 +96,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         height: TSizes.spaceBtwItems,
                       ),
                       TextField(
+                        controller: phoneNumberController,
                         keyboardType: TextInputType.phone,
                         decoration: InputDecoration(
                           focusedBorder: OutlineInputBorder(
@@ -104,6 +113,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         height: TSizes.spaceBtwItems,
                       ),
                       TextField(
+                        controller: passwordController,
                         obscureText: true,
                         decoration: InputDecoration(
                           focusedBorder: OutlineInputBorder(
@@ -124,6 +134,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         height: TSizes.spaceBtwItems,
                       ),
                       TextField(
+                        controller: addressController,
                         keyboardType: TextInputType.streetAddress,
                         decoration: InputDecoration(
                           focusedBorder: OutlineInputBorder(
@@ -184,7 +195,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () => Get.offAll(
-                      () => const HomeScreen(),
+                      () => const ProfileScreen(),
                     ),
                     child: const Text(
                       TTexts.tContinue,

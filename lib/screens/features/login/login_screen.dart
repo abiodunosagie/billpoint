@@ -1,4 +1,3 @@
-import 'package:BillPoint/screens/features/home/homescreen.dart';
 import 'package:BillPoint/screens/features/signup/signup_screen.dart';
 import 'package:BillPoint/utils/constants/colors.dart';
 import 'package:BillPoint/utils/constants/sizes.dart';
@@ -14,6 +13,9 @@ class LoginScreen extends StatefulWidget {
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
+
+TextEditingController usernameController = TextEditingController();
+TextEditingController passwordController = TextEditingController();
 
 class _LoginScreenState extends State<LoginScreen> {
   @override
@@ -58,6 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     TextField(
+                      controller: usernameController,
                       keyboardType: TextInputType.name,
                       decoration: InputDecoration(
                         focusedBorder: OutlineInputBorder(
@@ -74,6 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: TSizes.spaceBtwItems,
                     ),
                     TextField(
+                      controller: passwordController,
                       obscureText: true,
                       decoration: InputDecoration(
                         focusedBorder: OutlineInputBorder(
@@ -108,9 +112,23 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () => Get.offAll(
-                    () => const HomeScreen(),
-                  ),
+                  onPressed: () async {
+                    String email = usernameController.text.trim();
+                    String password = passwordController.text.trim();
+
+                    // Check if email and password are not empty
+                    if (email.isEmpty || password.isEmpty) {
+                      // Display an error message
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Please enter email and password.'),
+                        ),
+                      );
+                      return;
+                    }
+
+                    // Call loginUser function with provided email and password
+                  },
                   child: const Text(
                     TTexts.tContinue,
                   ),
