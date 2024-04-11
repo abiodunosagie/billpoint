@@ -78,6 +78,28 @@ class TTexts {
 
   // -- Product
   static const String popularProducts = "Popular Products";
+  static const String homscreenBalanceTextOne = "Total Balance";
+  static const String homscreenBalanceTitle = "N800,000";
+
+  // -- HomeScreen
+  static const String accountTitle = "Account";
+  static const String greetingTitle = "Hello, Abiodun";
+  static const String greetingSubTitle =
+      "What bill would you like to pay today?";
+  static const String addTitle = "Fund";
+  static const String recentTextSubTitle =
+      "Looks like there\'s no recent activity to show here. get started by making a transactions";
+  static const String sendTitle = "Send";
+  static const String convertTitle = "Convert";
+  static const String recentTransactionTitle = "RECENT TRANSACTIONS";
+  static const String recentActivityTitle = "Recent Activity";
+  static const String seeAllTitle = "See all";
+  static const String transactionTitle = "No Transaction Done";
+  static const String actionTitle = "Quick Actions";
+  static const String airtimeTitle = "Airtime";
+  static const String dataTitle = "Data";
+  static const String cableTvTitle = "CableTv";
+  static const String moreTitle = "More";
 
   // -- Onborading Final
   static const String onboardingFinalWelcomeTitle = "Welcome to BillPoint!";

@@ -1,3 +1,4 @@
+import 'package:BillPoint/screens/features/home/widgets/funding_page.dart';
 import 'package:BillPoint/utils/constants/colors.dart';
 import 'package:BillPoint/utils/constants/image_strings.dart';
 import 'package:BillPoint/utils/constants/sizes.dart';
@@ -19,116 +20,274 @@ class _HomeScreenState extends State<HomeScreen> {
     final dark = THelperFunctions.isDarkMode(context);
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 20,
-            vertical: 20,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  const CircleAvatar(
-                    radius: 50,
-                    backgroundImage: AssetImage(
-                      TImages.user,
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20,
+              vertical: 20,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CircleAvatar(
+                      radius: 25,
+                      backgroundColor: TColors.white,
+                      backgroundImage: AssetImage(
+                        TImages.user,
+                      ),
+                    ),
+                    CircleAvatar(
+                      radius: 25,
+                      child: Icon(
+                        Iconsax.notification,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: TSizes.spaceBtwItems,
+                ),
+                Text(
+                  TTexts.greetingTitle,
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  TTexts.greetingSubTitle,
+                  style: Theme.of(context).textTheme.bodyMedium!.apply(
+                        color: TColors.darkerGrey,
+                      ),
+                ),
+                const SizedBox(
+                  height: TSizes.spaceBtwSections,
+                ),
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.4,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: TColors.white,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          TTexts.homscreenBalanceTextOne,
+                          style: Theme.of(context).textTheme.titleSmall,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              TTexts.homscreenBalanceTitle,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineLarge!
+                                  .apply(
+                                    color: dark
+                                        ? TColors.white
+                                        : TColors.darkerGrey,
+                                  ),
+                            ),
+                            const SizedBox(
+                              width: TSizes.spaceBtwItems,
+                            ),
+                            const Icon(Iconsax.eye_slash),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        const Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            fundingPage(
+                              icon: Iconsax.bank,
+                              buttonText: TTexts.accountTitle,
+                            ),
+                            fundingPage(
+                              icon: Iconsax.add,
+                              buttonText: TTexts.addTitle,
+                            ),
+                            fundingPage(
+                              icon: Iconsax.send,
+                              buttonText: TTexts.sendTitle,
+                            ),
+                            fundingPage(
+                              icon: Iconsax.convert,
+                              buttonText: TTexts.convertTitle,
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: TSizes.spaceBtwItems,
+                        ),
+                        const Divider(
+                          thickness: 1,
+                          color: TColors.grey,
+                        ),
+                        const SizedBox(
+                          height: TSizes.spaceBtwItems,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text(
+                              TTexts.recentTransactionTitle,
+                            ),
+                            GestureDetector(
+                              onTap: () {},
+                              child: Text(
+                                TTexts.seeAllTitle,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyMedium!
+                                    .apply(
+                                      color: Colors.blue,
+                                    ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: TSizes.spaceBtwSections,
+                        ),
+                        Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              const Icon(
+                                Iconsax.receipt,
+                                color: TColors.grey,
+                              ),
+                              const SizedBox(
+                                width: 20,
+                              ),
+                              Text(
+                                TTexts.transactionTitle,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyLarge!
+                                    .apply(color: TColors.grey),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        TTexts.tUsername,
-                        style: Theme.of(context).textTheme.headlineMedium,
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        TTexts.tProfession,
-                        style: Theme.of(context).textTheme.bodyLarge,
-                      )
-                    ],
-                  )
-                ],
-              ),
-              const SizedBox(
-                height: TSizes.spaceBtwSections,
-              ),
-              const Row(
-                children: [
-                  Icon(
-                    Iconsax.call,
-                  ),
-                  SizedBox(
-                    width: TSizes.spaceBtwItems,
-                  ),
-                  Text(
-                    TTexts.tProfilePhone,
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: TSizes.spaceBtwItems,
-              ),
-              const Row(
-                children: [
-                  Icon(
-                    Iconsax.sms,
-                  ),
-                  SizedBox(
-                    width: TSizes.spaceBtwItems,
-                  ),
-                  Text(
-                    TTexts.tUserEmail,
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: TSizes.spaceBtwItems,
-              ),
-              Divider(
-                thickness: 1,
-                color: dark ? TColors.lightGrey : TColors.darkGrey,
-              ),
-              Center(
-                child: Text(
-                  TTexts.tUserAddress,
-                  style: Theme.of(context).textTheme.titleMedium,
                 ),
-              ),
-              const Center(
-                child: Text(
-                  TTexts.tUserAddressDetail,
-                  textAlign: TextAlign.center,
+                const SizedBox(
+                  height: TSizes.spaceBtwSections,
                 ),
-              ),
-              const Spacer(),
-              Divider(
-                thickness: 1,
-                color: dark ? TColors.lightGrey : TColors.darkGrey,
-              ),
-              Row(
-                children: [
-                  const Icon(
-                    Iconsax.logout,
-                    color: TColors.primary,
-                  ),
-                  const SizedBox(
-                    width: TSizes.spaceBtwItems,
-                  ),
-                  TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      TTexts.logOut,
-                      style: Theme.of(context).textTheme.titleMedium,
+                const Text(
+                  TTexts.actionTitle,
+                ),
+                const SizedBox(
+                  height: TSizes.spaceBtwSections,
+                ),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    fundingPage(
+                      buttonColor: TColors.primary,
+                      buttonText: TTexts.airtimeTitle,
+                      icon: Iconsax.call,
                     ),
-                  )
-                ],
-              ),
-            ],
+                    fundingPage(
+                      buttonColor: TColors.primary,
+                      buttonText: TTexts.dataTitle,
+                      icon: Iconsax.share,
+                    ),
+                    fundingPage(
+                      buttonColor: TColors.primary,
+                      buttonText: TTexts.cableTvTitle,
+                      icon: Iconsax.monitor,
+                    ),
+                    fundingPage(
+                      buttonColor: TColors.primary,
+                      buttonText: TTexts.moreTitle,
+                      icon: Iconsax.more,
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: TSizes.spaceBtwSections,
+                ),
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.4,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: TColors.white,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text(
+                              TTexts.recentActivityTitle,
+                            ),
+                            GestureDetector(
+                              onTap: () {},
+                              child: Text(
+                                TTexts.seeAllTitle,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyMedium!
+                                    .apply(
+                                      color: Colors.blue,
+                                    ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            const SizedBox(
+                              height: TSizes.spaceBtwSections,
+                            ),
+                            const CircleAvatar(
+                              radius: 60,
+                              backgroundColor: TColors.white,
+                              backgroundImage: AssetImage(
+                                TImages.user,
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            Text(
+                              TTexts.recentTextSubTitle,
+                              style:
+                                  Theme.of(context).textTheme.bodyMedium!.apply(
+                                        color: TColors.darkGrey,
+                                      ),
+                              textAlign: TextAlign.center,
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

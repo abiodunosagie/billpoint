@@ -6,7 +6,7 @@ import 'package:iconsax/iconsax.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/constants/sizes.dart';
 import '../../../utils/constants/text_strings.dart';
-import '../home/homescreen.dart';
+import '../home/profile_screen.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -184,7 +184,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () => Get.offAll(
-                      () => const HomeScreen(),
+                      () => const ProfileScreen(),
                     ),
                     child: const Text(
                       TTexts.tContinue,

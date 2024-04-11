@@ -1,4 +1,4 @@
-import 'package:BillPoint/screens/features/onboard_final.dart';
+import 'package:BillPoint/screens/features/onboarding/onboard_final.dart';
 import 'package:BillPoint/utils/constants/image_strings.dart';
 import 'package:BillPoint/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';
