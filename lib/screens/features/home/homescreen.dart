@@ -6,6 +6,7 @@ import 'package:BillPoint/utils/constants/text_strings.dart';
 import 'package:BillPoint/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:lottie/lottie.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -15,10 +16,79 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
     return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(
+              Iconsax.home,
+              color: TColors.darkGrey,
+            ),
+            label: 'Home',
+            activeIcon: Icon(
+              Iconsax.home,
+              color: TColors.primary,
+            ),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Iconsax.shop,
+              color: TColors.darkGrey,
+            ),
+            label: 'Services',
+            activeIcon: Icon(
+              Iconsax.home,
+              color: TColors.primary,
+            ),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Iconsax.wallet,
+              color: TColors.darkGrey,
+            ),
+            label: 'Wallet',
+            activeIcon: Icon(
+              Iconsax.home,
+              color: TColors.primary,
+            ),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Iconsax.user,
+              color: TColors.darkGrey,
+            ),
+            label: 'Profile',
+            activeIcon: Icon(
+              Iconsax.home,
+              color: TColors.primary,
+            ),
+          ),
+        ],
+        elevation: 5,
+        showSelectedLabels: true,
+        type: BottomNavigationBarType.fixed,
+        currentIndex: _selectedIndex,
+        selectedItemColor: TColors.primary,
+        unselectedItemColor: TColors.darkGrey,
+        unselectedLabelStyle: const TextStyle(
+          color: TColors.darkGrey,
+        ),
+        selectedLabelStyle: const TextStyle(
+          color: TColors.darkGrey,
+        ),
+        onTap: _onItemTapped,
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -262,11 +332,11 @@ class _HomeScreenState extends State<HomeScreen> {
                             const SizedBox(
                               height: TSizes.spaceBtwSections,
                             ),
-                            const CircleAvatar(
-                              radius: 60,
-                              backgroundColor: TColors.white,
-                              backgroundImage: AssetImage(
-                                TImages.user,
+                            SizedBox(
+                              height: 200,
+                              width: 200,
+                              child: Lottie.asset(
+                                TImages.loadingAnim,
                               ),
                             ),
                             const SizedBox(
@@ -279,7 +349,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         color: TColors.darkGrey,
                                       ),
                               textAlign: TextAlign.center,
-                            )
+                            ),
                           ],
                         ),
                       ],

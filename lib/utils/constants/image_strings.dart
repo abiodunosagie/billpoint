@@ -44,6 +44,7 @@ class TImages {
 
   // -- Animations
   static const String refer = "assets/animation/refer.json";
+  static const String loadingAnim = "assets/animation/loadinganim.json";
   static const String globe = "assets/animation/refer.json";
   static const String payment = "assets/animation/paymentanim.json";
   static const String scouting = "assets/animation/scouting.json";
