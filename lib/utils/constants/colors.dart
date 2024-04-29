@@ -16,6 +16,7 @@ class TColors {
   static const Color light = Color(0xFFf5f5f5);
   static const Color dark = Color(0xFF000E28);
   static const Color primaryBackground = Color(0xFFF3F5FF);
+  static const Color accountBackgroundColor = Color(0xFFf6fafb);
 
   // Dot Navigation Colors
   static const Color dotPrimary = Color(0xfff66b04);

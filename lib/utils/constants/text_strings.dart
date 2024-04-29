@@ -80,6 +80,19 @@ class TTexts {
   static const String popularProducts = "Popular Products";
   static const String homscreenBalanceTextOne = "Total Balance";
   static const String homscreenBalanceTitle = "N800,000";
+  // -- Bottom Sheet Texts
+  static const String addMoneyTitle = "Add Money";
+  static const String addMoneySubTitle =
+      "Add money to your account with your phone number or your account number";
+  static const String accountNumber = "9159734415";
+  static const String accountNumberTitle = "Account Number";
+  static const String accountHolderTitle = "Account Name";
+  static const String accountHolderSubTitle = "OSAGIE OLISE ABIODUN";
+  static const String accountNumberSubTitle = "BillPoint MFB";
+  static const String accountNumberCancel = "Cancel";
+  static const String accountNumberShare = "Share";
+  static const String phoneNumberTitle = "Phone Number";
+  static const String AccountNumberTitle = "Account Number";
 
   // -- HomeScreen
   static const String accountTitle = "Account";
