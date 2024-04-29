@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:BillPoint/screens/features/home/widgets/funding_page.dart';
 import 'package:BillPoint/utils/constants/colors.dart';
 import 'package:BillPoint/utils/constants/image_strings.dart';
@@ -5,8 +7,12 @@ import 'package:BillPoint/utils/constants/sizes.dart';
 import 'package:BillPoint/utils/constants/text_strings.dart';
 import 'package:BillPoint/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 import 'package:iconsax/iconsax.dart';
 import 'package:lottie/lottie.dart';
+
+import '../../../controllers/login_controller.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -27,6 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
+    final controller = Get.put(LoginController());
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         items: const [
@@ -99,17 +106,22 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CircleAvatar(
-                      radius: 25,
-                      backgroundColor: TColors.white,
-                      backgroundImage: AssetImage(
-                        TImages.user,
+                    GestureDetector(
+                      onTap: () {
+                        controller.logout();
+                      },
+                      child: const CircleAvatar(
+                        radius: 25,
+                        backgroundColor: TColors.white,
+                        backgroundImage: AssetImage(
+                          TImages.user,
+                        ),
                       ),
                     ),
-                    CircleAvatar(
+                    const CircleAvatar(
                       radius: 25,
                       child: Icon(
                         Iconsax.notification,

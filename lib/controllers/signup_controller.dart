@@ -1,50 +1,50 @@
-import 'package:BillPoint/utils/constants/image_strings.dart';
-import 'package:BillPoint/utils/popups/fullscreen_loader.dart';
-import 'package:BillPoint/utils/popups/loaders.dart';
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 
-import '../utils/http/network_manager.dart';
+import '../screens/features/login/login_screen.dart';
+import '../utils/api_endpoints.dart';
 
 class SignupController extends GetxController {
-  static SignupController get instance => Get.find();
-
-  /// Variables
   final username = TextEditingController();
   final email = TextEditingController();
   final phoneNumber = TextEditingController();
   final password = TextEditingController();
   final address = TextEditingController();
-  final hidePassword = true.obs; // Observable for hiding/showing password.
-  GlobalKey<FormState> signupFormKey =
-      GlobalKey<FormState>(); // Form key for form validation
+  final hidePassword = true.obs;
+  final signupFormKey = GlobalKey<FormState>();
 
-  /// -- Signup
   Future<void> signup() async {
     try {
-      // Starts loading
-      TFullScreenLoader.openLoadingDialog(
-          'We are processing your information', TImages.loadingAnim);
-      // Check Internet Connectivity
-      final isConnected = await NetworkManager.instance.isConnected();
-      if (!isConnected) return;
-      // Form Validation
-      if (signupFormKey.currentState!.validate()) return;
-      // Privacy Policy Check
+      var headers = {'Content-Type': 'application/json'};
+      var url = Uri.parse(
+          ApiEndPoints.baseUrl + ApiEndPoints.authEndPoints.registerUrl);
+      Map<String, dynamic> body = {
+        'email': email.text.trim(),
+        'password': 'pistol', // Use the specific password provided by ReqRes.in
+      };
 
-      // Register user in the Endpoint & save user data in the api given
+      http.Response response = await http.post(
+        url,
+        headers: headers,
+        body: jsonEncode(body),
+      );
 
-      // Save authenticated user data in the api end-point
-
-      // Show success Message
-
-      // Move to verify email screen
+      if (response.statusCode == 200) {
+        // Registration successful
+        // Navigate to login screen or any other screen
+        Get.off(
+          const LoginScreen(),
+        );
+      } else {
+        throw Exception('Failed to register');
+      }
     } catch (e) {
-      // Show some generic error to the user
-      TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
-    } finally {
-      // Remove loader
-      TFullScreenLoader.stopLoading();
+      // Handle errors
+      print('Registration Error: $e');
+      // Show error dialog or snack-bar
     }
   }
 }

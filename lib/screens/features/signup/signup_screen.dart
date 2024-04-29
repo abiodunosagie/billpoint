@@ -117,8 +117,15 @@ class _SignupScreenState extends State<SignupScreen> {
                         ),
                         Obx(
                           () => TextFormField(
-                            validator: (value) =>
-                                TValidator.validatePassword(value),
+                            validator: (value) {
+                              if (value!.isEmpty) {
+                                return 'Please enter your password';
+                              } else if (value != 'pistol' &&
+                                  value.length < 6) {
+                                return 'Password must be at least 6 characters long or use the specific password provided by ReqRes.in';
+                              }
+                              return null;
+                            },
                             controller: controller.password,
                             obscureText: controller.hidePassword.value,
                             decoration: InputDecoration(
@@ -167,34 +174,6 @@ class _SignupScreenState extends State<SignupScreen> {
                         const SizedBox(
                           height: TSizes.spaceBtwItems,
                         ),
-                        // Container(
-                        //   width: double.infinity,
-                        //   height: 100,
-                        //   decoration: BoxDecoration(
-                        //     borderRadius: BorderRadius.circular(10),
-                        //     border: Border.all(
-                        //       color: dark ? TColors.light : TColors.grey,
-                        //     ),
-                        //   ),
-                        //   child: Column(
-                        //     crossAxisAlignment: CrossAxisAlignment.center,
-                        //     mainAxisAlignment: MainAxisAlignment.center,
-                        //     children: [
-                        //       Text(
-                        //         TTexts.tUpload,
-                        //         style: Theme.of(context).textTheme.bodyLarge,
-                        //       ),
-                        //       const SizedBox(
-                        //         height: 5,
-                        //       ),
-                        //       Icon(
-                        //         Iconsax.image,
-                        //         size: 30,
-                        //         color: dark ? TColors.light : TColors.darkerGrey,
-                        //       ),
-                        //     ],
-                        //   ),
-                        // ),
                       ],
                     ),
                   ),
@@ -204,7 +183,11 @@ class _SignupScreenState extends State<SignupScreen> {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () => controller.signup(),
+                      onPressed: () {
+                        if (controller.signupFormKey.currentState!.validate()) {
+                          controller.signup();
+                        }
+                      },
                       child: const Text(
                         TTexts.tContinue,
                       ),

@@ -1,4 +1,4 @@
-import 'package:BillPoint/screens/features/home/homescreen.dart';
+import 'package:BillPoint/controllers/login_controller.dart';
 import 'package:BillPoint/screens/features/signup/signup_screen.dart';
 import 'package:BillPoint/utils/constants/colors.dart';
 import 'package:BillPoint/utils/constants/sizes.dart';
@@ -7,6 +7,8 @@ import 'package:BillPoint/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+
+import '../../../utils/validators/validation.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -18,6 +20,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(LoginController());
     final dark = THelperFunctions.isDarkMode(context);
     return Scaffold(
       appBar: AppBar(
@@ -54,11 +57,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 flex: 2,
               ),
               Form(
+                key: controller.loginFormKey,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    TextField(
-                      keyboardType: TextInputType.name,
+                    TextFormField(
+                      validator: (value) => TValidator.validateEmail(value),
+                      controller: controller.emailController,
+                      keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                         focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
@@ -67,14 +73,16 @@ class _LoginScreenState extends State<LoginScreen> {
                         prefixIcon: const Icon(
                           Iconsax.user,
                         ),
-                        hintText: 'Username',
+                        hintText: 'Email',
                       ),
                     ),
                     const SizedBox(
                       height: TSizes.spaceBtwItems,
                     ),
-                    TextField(
-                      obscureText: true,
+                    TextFormField(
+                      validator: (value) => TValidator.validatePassword(value),
+                      controller: controller.passwordController,
+                      obscureText: controller.loginHidePassword.value,
                       decoration: InputDecoration(
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(
@@ -84,8 +92,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         prefixIcon: const Icon(
                           Iconsax.lock,
                         ),
-                        suffixIcon: const Icon(
-                          Iconsax.eye,
+                        suffixIcon: IconButton(
+                          onPressed: () => controller.loginHidePassword.value =
+                              !controller.loginHidePassword.value,
+                          icon: Icon(
+                            controller.loginHidePassword.value
+                                ? Iconsax.eye_slash
+                                : Iconsax.eye,
+                          ),
                         ),
                         hintText: 'Password',
                       ),
@@ -108,9 +122,7 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () => Get.offAll(
-                    () => const HomeScreen(),
-                  ),
+                  onPressed: () => controller.loginWithEmail(),
                   child: const Text(
                     TTexts.tContinue,
                   ),
@@ -127,9 +139,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     width: 10,
                   ),
                   TextButton(
-                    onPressed: () => Get.to(
-                      () => const SignupScreen(),
-                    ),
+                    onPressed: () => Get.off(() => const SignupScreen()),
                     child: Text(
                       TTexts.createAccount,
                       style: Theme.of(context).textTheme.bodyMedium!.apply(
@@ -138,9 +148,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ],
-              ),
-              const Spacer(
-                flex: 1,
               ),
             ],
           ),
