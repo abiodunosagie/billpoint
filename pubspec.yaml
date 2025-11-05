@@ -27,6 +27,10 @@ dependencies:
   # State Management
   get: ^4.6.5
   get_storage: ^2.1.1
+  flutter_riverpod: ^2.4.9
+
+  # HTTP Client
+  http: ^1.1.0
 
   # Product Specific
   readmore: ^2.2.0
